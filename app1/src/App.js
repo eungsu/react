@@ -1,6 +1,14 @@
+import Header from "./component/Header";
+import Body from "./component/Body";
+import Footer from "./component/Footer";
+
 function App() {
   return (
-    <div>Hello!</div>
+    <div>
+      <Header />
+      <Body />
+      <Footer />
+    </div>
   );
 }
 
