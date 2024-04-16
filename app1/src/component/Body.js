@@ -33,16 +33,37 @@
 // export default Body;
 
 // Props로 전달받은 값에 대해서 기본값을 미리 설정하기
+// function Body({name, location, favorites}) {
+//     return (
+//         <div>
+//             <p>{name}님은 {location}에 살고 있습니다.</p>
+//             <p>{name}님은 {favorites.length}개의 과일을 좋아합니다.</p>
+//         </div>
+//     );
+// }
+
+// // defaultProps를 사용하면 컴포넌트가 전달받을 Props의 기본값을 미리 설정할 수 있다.
+// Body.defaultProps = {
+//     favorites: []
+// }
+// export default Body;
+
+// 이벤트 처리하기
 function Body({name, location, favorites}) {
+    function handleOnClick(e) {
+        console.log(e.target.name)
+    }
+
     return (
         <div>
             <p>{name}님은 {location}에 살고 있습니다.</p>
             <p>{name}님은 {favorites.length}개의 과일을 좋아합니다.</p>
+            <button name="btn1" onClick={handleOnClick}>버튼1</button>
+            <button name="btn2" onClick={handleOnClick}>버튼2</button>
         </div>
     );
 }
 
-// defaultProps를 사용하면 컴포넌트가 전달받을 Props의 기본값을 미리 설정할 수 있다.
 Body.defaultProps = {
     favorites: []
 }
