@@ -22,11 +22,17 @@
 // export default Body;
 
 // 구조분해할당으로 여러 개의 값 사용하기
-function Body({name, location}) {
+function Body({name, location, favorites}) {
     return (
         <div>
-            {name}님은 {location}에 살고 있습니다.
+            <p>{name}님은 {location}에 살고 있습니다.</p>
+            <p>{name}님은 {favorites.length}개의 과일을 좋아합니다.</p>
         </div>
     );
+}
+
+// defaultProps를 사용하면 컴포넌트가 전달받을 Props의 기본값을 미리 설정할 수 있다.
+Body.defaultProps = {
+    favorites: []
 }
 export default Body;
