@@ -1,6 +1,8 @@
+import Body from "./component/Body";
+
 function App() {
   return (
-    <div></div>
+    <Body />
   );
 }
 
