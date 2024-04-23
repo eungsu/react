@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "JWT secrt"
+  },
+  {
+    "name": "jwt.token-validity-in-seconds",
+    "type": "java.lang.String",
+    "description": "JWT validity time in seconds"
+  }
+]}
