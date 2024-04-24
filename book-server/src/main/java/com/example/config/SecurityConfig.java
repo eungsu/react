@@ -1,8 +1,8 @@
 package com.example.config;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(securedEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig {
 	
@@ -36,11 +37,7 @@ public class SecurityConfig {
 					.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
 			.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests(auth -> auth
-					.requestMatchers("/api/signup").permitAll()
-					.requestMatchers("/api/signin").permitAll()
-					.requestMatchers(PathRequest.toH2Console()).permitAll()
-					.requestMatchers("/favicon.ico").permitAll()
-					.anyRequest().authenticated())
+					.requestMatchers("/**").permitAll())
 			.addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
 			.exceptionHandling(exceptionHandling -> exceptionHandling
 					.authenticationEntryPoint(authenticationEntryPoint)
